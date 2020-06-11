@@ -16,7 +16,9 @@ void Sorting::run(){
         sort_selection(arr,size);
     } else if (algorithm == "Insertion Sort"){
         sort_insertion(arr,size);
-    }
+    } else if (algorithm == "Quicksort"){
+            sort_quick(arr,size,0,size-1);
+     }
 
     // finish sorting
     // visualize to make sure correct num_comparisons and num_changes are shown
