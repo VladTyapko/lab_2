@@ -17,7 +17,7 @@ class Sorting : public QThread {
 
 private:
     QObject* parent;
-    QStringList algorithms = {"Bubble Sort","Insertion Sort","Selection Sort"};
+    QStringList algorithms = {"Bubble Sort","Insertion Sort","Selection Sort","Quicksort"};
     QString algorithm;
     QStringList shuffles = {"Random", "Reverse", "Almost sorted"};
     QString shuffleType;
