@@ -185,7 +185,54 @@ void Sorting::sort_selection(int *arr, int size){
 }
 
 
+void Sorting::sort_quick(int*arr,int size,int start,int end){
+    if (start >= end){
+        return;
+    }
 
+    int pivot = arr[end];       // rightmost element is chosen as pivot
+    int left = start;
+    int right = end-1;
+
+    while (true){
+        ++num_comparisons;
+        while (arr[left]<pivot && left<end){
+            //visualize
+            color_size = 1;
+            color_index = new int[color_size];
+            color_index[0] = left;
+            visualize(arr,size,color_index,color_size);
+            delete [] color_index;
+
+            ++left;
+            ++num_comparisons;
+        }
+        ++num_comparisons;
+        while (arr[right]>=pivot && right>left){
+            //visualize
+            color_size = 2;
+            color_index = new int[color_size];
+            color_index[0] = left;
+            color_index[1] =  right;
+            visualize(arr,size,color_index,color_size);
+            delete [] color_index;
+            --right;
+            ++num_comparisons;
+        }
+        if (left == end){
+            sort_quick(arr,size,start,end-1);
+            break;
+        } else if (left == right){      // partition process occurs here
+            swap(arr,size,left,end);
+            sort_quick(arr,size,start,left-1);
+            sort_quick(arr,size,left+1,end);
+            break;
+        } else {
+            swap(arr,size,left,right);
+            continue;
+        }
+    }
+}
 
 
 
